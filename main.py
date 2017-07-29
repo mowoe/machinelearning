@@ -20,8 +20,6 @@ class Hidden_layer_Neuron(object):
     def __init__(self):
         self.vls = []
         self.synaps = []
-    def get_value(self, vls):
-        self.vls = vls
     def set_output(self, outp):
         self.synaps.append(outp)
     def get_output(self):
@@ -47,8 +45,6 @@ class OutputNeuron(object):
         global log
         self.vls.append(vl)
         log.append(("mir wurde der Wert", vl, "appendet", self))
-    def set_value(self, inp):
-        self.inp = inp
     def get_output(self):
         for vl in self.vls:
             self.gesvls += vl
