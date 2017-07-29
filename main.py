@@ -1,7 +1,5 @@
 import math
-import random
 import time
-import psutil
 neurons = []
 log = []
 
@@ -117,9 +115,8 @@ def create_nn(values, no_hls, no_outputs, no_hneus, weights):
     for hin in hn:
         log.append((hin.get_output(), "hierhin wird das hiddenlayer neuron ihren output geben"))
     while f <  len(syns):
-        h = random.uniform(0, 50)
         syns[f].set_weight(weights[f])
-        log.append(("ich habe der Synapse", syns[f], "den Wert", h, "zugewiesen!"))
+        log.append(("ich habe der Synapse", syns[f], "den Wert", weights[f], "zugewiesen!"))
         f +=1
     for input_neuron in ins:
         input_neuron.go()
@@ -196,7 +193,7 @@ def train(inputs, no_outputs, des_outp):
             for x in xrange(no_weights):
                 weights.append(1)
             print "halo i bims", no_hls, schrittweite, weights
-        print "currently trying with",no_hls,"hidden layer with",no_hneus,"neuron each, with an error of", error, "i want output:", des_outp, "with a step of", schrittweite, "RAM Usage:", psutil.virtual_memory()[2], "%"
+        print "currently trying with",no_hls,"hidden layer with",no_hneus,"neuron each, with an error of", error, "i want output:", des_outp, "with a step of", schrittweite
         time.sleep(0.01)
     print "ok finished learning process"
     print "ingredients:", (inputs, no_hls, no_outputs, no_hneus, weights)
